@@ -3,7 +3,7 @@ import type { GameConfig } from "@/types/site";
 export const gameConfig: GameConfig = {
   name: "Mukbang Game",
   slug: "mukbanggame",
-  domain: "https://mukbanggame.wiki",
+  domain: "https://www.mukbanggame.wiki",
   theme: {
     primaryColor: "#f4c542",
     accentColor: "#ff6b6b",
