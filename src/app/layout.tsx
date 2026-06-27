@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
-import { AdsterraSmartLink } from "@/components/ads";
+import { AdsterraFooterSlot, AdsterraSmartLink, AdsterraTopSlot } from "@/components/ads";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { siteConfig } from "@/data/site";
@@ -78,7 +78,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         ) : null}
         <AdsterraSmartLink />
         <Navbar />
+        <AdsterraTopSlot />
         {children}
+        <AdsterraFooterSlot />
         <Footer />
       </body>
     </html>
