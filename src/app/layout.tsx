@@ -11,6 +11,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const popunderScriptUrl = runtimeConfig.adsterraPopunderScriptUrl;
 const adsenseClientId = runtimeConfig.adsenseClientId;
+const analyticsId = runtimeConfig.analyticsId;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.domain),
@@ -72,6 +73,23 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
             crossOrigin="anonymous"
           />
+        ) : null}
+        {analyticsId ? (
+          <>
+            <Script
+              id="google-tag-manager"
+              src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${analyticsId}');
+              `}
+            </Script>
+          </>
         ) : null}
         {popunderScriptUrl ? (
           <Script id="adsterra-popunder" src={popunderScriptUrl} strategy="afterInteractive" />
