@@ -236,6 +236,21 @@ export function AdsterraLeaderboard() {
   );
 }
 
+export function AdsterraTopSlot() {
+  const hasLeaderboard =
+    runtimeConfig.adsterraBanner728x90Key ||
+    runtimeConfig.adsterraLeaderboardId ||
+    runtimeConfig.adsterraBanner320x50Key;
+
+  if (!hasLeaderboard) return null;
+
+  return (
+    <div className="mx-auto max-w-7xl px-4 pt-4">
+      <AdsterraLeaderboard />
+    </div>
+  );
+}
+
 export function AdsterraNative1() {
   return (
     <AdsterraNativeUnit
@@ -251,6 +266,19 @@ export function AdsterraNative2() {
       containerId={runtimeConfig.adsterraNative2Id}
       scriptUrl={runtimeConfig.adsterraNative2ScriptUrl}
     />
+  );
+}
+
+export function AdsterraFooterSlot() {
+  if (!runtimeConfig.adsterraNative1Id || !runtimeConfig.adsterraNative1ScriptUrl) return null;
+
+  return (
+    <div className="mx-auto max-w-7xl px-4 py-8">
+      <AdsterraNative1 />
+      <div className="mt-3">
+        <AdDisclosure />
+      </div>
+    </div>
   );
 }
 
